@@ -7,6 +7,10 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
 \usepackage{siunitx}
 \usepackage{wasysym}
 \topmargin -2.5 cm
@@ -23,14 +27,12 @@
 El texto está disponible bajo la Licencia Creative Commons Atribución Compartir Igual 3.0
 \begin{enumerate} 
 
-\item Un satélite de masa m se encuentra en una órbita eliptica alrededor de la Tierra. En el apogeo su altitud es h y en el perigeo h'. 
+\item Un satélite de masa $m$ se encuentra en una órbita eliptica alrededor de la Tierra. En el apogeo su altitud es $h$ y en el perigeo $h'$. 
 
-  \begin{minipage}{0.4\linewidth}
-    \includegraphics[scale=0.6]{Satelite1}
-  \end{minipage}
+ 
   \begin{minipage}{0.6\linewidth}
     \begin{enumerate}
-    \item Energía del satélite si h=1100 km y h'=4100 km.
+    \item Energía del satélite si $h=1100 km$ y $h'=4100 km$.
       \label{item:JFa}
     \item Halle la energía minima de lanzamiento para los mismos valores anteriores.
       \label{item:JFb}
@@ -45,82 +47,96 @@ El texto está disponible bajo la Licencia Creative Commons Atribución Comparti
   \begin{itemize}  
   
   \item[\ref{item:JFa})]
-  Primeramente debemos tener presente que como la masa del satélite es muchisimo menor que la de la Tierra es totalmente válido asumir $m<<M\rightarrow\mu=m$.\\
- Plasmemos en el siguiente gráfico la situacion planteada:\\
+  Primeramente debemos tener presente que como la masa del satélite es muchisimo menor que la de la Tierra es totalmente válido asumir
+\begin{equation} 
+m<<M\rightarrow\mu=m\nonumber
+\end{equation}
+
+Plasmemos en el siguiente gráfico la situacion planteada:\\
   \includegraphics[scale=0.9]{Satelite}\\
   \begin{eqnarray}
   Re&=&6400 km=6400000 m\nonumber\\ 
-  A&=&(1100+4100+(2*6400)) km\nonumber\\
-  A&=&18000  km = 1.8x10^4 km = 1.8x10^7 m\\
+  A&=&(1100+4100+(2\times6400)) km\nonumber\\
+  A&=&18000  km = 1.8\times10^4 km = 1.8\times10^7 m\\
    \nonumber
  \end{eqnarray}
-  Para calcular la energía usamos la ecuacion $A=\frac{C}{-E}$, donde $C=G*M*m$.\\
-  Con un analisis de fuerzas podemos dejar C en una expresión mas simple:\\
-  \begin{center}
-   \begin{minipage}{0.4\linewidth}
-    \includegraphics[scale=1.0]{fuerzas}
-  \end{minipage} 
-   \begin{minipage}{0.4\linewidth}
-   \begin{eqnarray}
-+\downarrow \sum f_y \Longrightarrow f(r)&=&m*g\nonumber\\
-\frac{G*M*m}{Re^2}&=&m*g\nonumber\\
-\frac{G*M}{Re^2}&=&g\nonumber\\
-G*M&=&g*Re^2    \\
+ 
+ Para calcular la energía usamos la ecuación:
+\begin{equation}
+A=\frac{C}{-E}\nonumber
+\end{equation}
+donde
+\begin{equation}
+C=G M m\nonumber
+\end{equation} 
+Con un analisis de fuerzas podemos dejar $C$ en una expresión mas simple:\\
+\begin{center}
+
+
+\begin{eqnarray}
++\downarrow \sum f_y \Longrightarrow f(r)&=&m g\nonumber\\
+\frac{G M m}{Re^2}&=&m g\nonumber\\
+\frac{G M}{Re^2}&=&g\nonumber\\
+G M&=&g Re^2\\
 \nonumber
 \end{eqnarray}    
-\end{minipage}
+
 \end{center}
-Reemplazando la igualdad (2) en la ecuación de C\\
+Reemplazando la igualdad (2) en la ecuación de $C$\\
 \begin{eqnarray}
-C&=&G*M*m\nonumber\\
-C&=&m*g*Re^2\nonumber\\
-C&=&(2000 kg)*(9.8\frac{m}{s^2})*(6400000 m)^2\nonumber\\
-C&=&8.028x10^{17} J.m
+C&=&G M m\nonumber\\
+C&=&m g Re^2\nonumber\\
+C&=&(2000 kg)(9.8\frac{m}{s^2})(6400000 m)^2\nonumber\\
+C&=&8.028\times 10^{17} J.m
 \end{eqnarray}
-Ahora que conocemos los valores de A y C podemos usar la ecuación propuesta al inicio:\\
+Ahora que conocemos los valores de $A$ y $C$ podemos usar la ecuación propuesta al inicio:\\
 \begin{eqnarray}
 E&=&-\frac{C}{A}\nonumber\\
-E&=&-\frac{8.028x10^{17} J.m}{1.8x10^7 m}\nonumber\\
-E&=&-4.46x10^{10} J
+E&=&-\frac{8.028\times 10^{17} J.m}{1.8\times10^7 m}\nonumber\\
+E&=&-4.46\times10^{10} J
 \end{eqnarray}
   
   \item[\ref{item:JFb})] 
-  La energia minima de lanzamiento està dada por $E_{min}=E-E_i$. Para la energìa inicial podemos usar el momento antes del lanzamiento, es decir, cuando la energía solo es energía gravitacional potencial.\\
+  La energía minima de lanzamiento está dada por:
+ \begin{equation} 
+ E_{min}=E-E_i\nonumber
+ \end{equation}
+ Para la energía inicial podemos usar el momento antes del lanzamiento, es decir, cuando la energía solo es energía gravitacional potencial.\\
  \begin{eqnarray}
- E_i&=&-\frac{G*M*m}{Re}\nonumber\\
+ E_i&=&-\frac{G M m}{Re}\nonumber\\
  E_i&=&-\frac{C}{Re}\nonumber\\
- E_i&=&-1.25x10^{11} J\\
+ E_i&=&-1.25\times10^{11} J\\
  \nonumber
  \end{eqnarray}
  En consecuencia la energía minima de lanzamiento es:\
  \begin{eqnarray}
  E_{min}&=&E-E_i\nonumber\\
- E_{min}&=&-4.46x10^{10} J + 1.25x10^{11} J\nonumber\\
- E_{min}&=&8.04x10^{10} J\\
+ E_{min}&=&-4.46\times10^{10} J + 1.25\times10^{11} J\nonumber\\
+ E_{min}&=&8.04\times10^{10} J\\
  \nonumber
 \end{eqnarray}
   
   
   
-  \item[\ref{item:JFc})]
-  El momento angular lo podemos calcular con la siguiente ecuación:\\
-  \begin{center}
-                                                $\varepsilon^2=1+\frac{2*E*L^2}{m*C^2}$\\
-\end{center}
-Pero aún no conocemos la exxcentricidad, así que hay que calcularla primero:\\
+\item[\ref{item:JFc})]
+El momento angular lo podemos calcular con la siguiente ecuación:\\
+\begin{equation}
+\varepsilon^2=1+\frac{2 E L^2}{m C^2}
+\end{equation}
+Pero aún no conocemos la excentricidad, así que hay que calcularla primero:\\
 \begin{eqnarray}
 \varepsilon&=&\frac{r_{max}-r_{min}}{A}\nonumber\\
-\varepsilon&=&\frac{4100 km - 1100 km}{1.8x10^4 km}\nonumber\\
-\varepsilon&=&\frac{3000 km}{1.8x10^4 km}\nonumber\\
+\varepsilon&=&\frac{4100 km - 1100 km}{1.8\times10^4 km}\nonumber\\
+\varepsilon&=&\frac{3000 km}{1.8\times10^4 km}\nonumber\\
 \varepsilon&=&0.166\\
 \nonumber
 \end{eqnarray}
 Ahora despejando L de la ecuación de excentricidad:\\
 \begin{eqnarray}
-\varepsilon^2-1&=&\frac{2*E*L^2}{m*C^2}\nonumber\\
-\sqrt{\frac{(\varepsilon^2-1)*(m*C^2)}{2*E}}&=&L\nonumber\\
-\sqrt{\frac{(0.027-1)*(2000 kg * (8.028x10^{17} J.m)^2)}{2*(-4.46x10^{10} J)}}&=&L\nonumber\\
-1.18x10^{14} \frac{kg.m^2}{s}&=&L\\
+\varepsilon^2-1&=&\frac{2 E L^2}{m C^2}\nonumber\\
+\sqrt{\frac{(\varepsilon^2-1)(m C^2)}{2 E}}&=&L\nonumber\\
+\sqrt{\frac{(0.027-1)(2000 kg (8.028\times10^{17} J.m)^2)}{2(-4.46\times10^{10} J)}}&=&L\nonumber\\
+1.18\times10^{14} \frac{kg.m^2}{s}&=&L\\
 \nonumber
 \end{eqnarray} 
 
@@ -129,23 +145,23 @@ Ahora despejando L de la ecuación de excentricidad:\\
 En primer lugar calculamos la velocidad en el perigeo con la ecuacion:\\
 
 \begin{eqnarray}
-E&=&\frac{m*V^2}{2}-\frac{C}{r_{min}}\nonumber\\
-E+\frac{C}{r_{min}}&=&\frac{m*V^2}{2}\nonumber\\
-\sqrt{\frac{2}{m}*(E+\frac{C}{r_{min}})}&=&V\\
+E&=&\frac{m V^2}{2}-\frac{C}{r_{min}}\nonumber\\
+E+\frac{C}{r_{min}}&=&\frac{m V^2}{2}\nonumber\\
+\sqrt{\frac{2}{m} \left(E+\frac{C}{r_{min}}\right)}&=&V\\
 \nonumber
 \end{eqnarray}
 
 \begin{eqnarray}
  r_{min}&=&6400 km + 1100 km = 7500 km = 7500000 m\nonumber\\ 
- V_p&=&\sqrt{\frac{2}{2000 kg}*(-4.46x10^{10} J + \frac{8.028x10^{17} J.m}{7500000 m})}\nonumber\\
+ V_p&=&\sqrt{\frac{2}{2000 kg}\left(-4.46\times10^{10} J + \frac{8.028\times10^{17} J.m}{7500000 m}\right)}\nonumber\\
  V_p&=&7901.9 \frac{m}{s}\\
  \nonumber
 \end{eqnarray}
 
 Finalmente calculamos la velocidad en el apogeo, con una ecuación relativamente mas sencilla que la usada para el perigeo.\\
 \begin{eqnarray}
-V_a&=&\frac{V_p*r_{min}}{r_{max}}\nonumber\\
-V_a&=&\frac{7500000 m * 7901.9 \frac{m}{s}}{10500000 m}\nonumber\\
+V_a&=&\frac{V_p r_{min}}{r_{max}}\nonumber\\
+V_a&=&\frac{7500000 m \times 7901.9 \frac{m}{s}}{10500000 m}\nonumber\\
 V_a&=&5644.2 \frac{m}{s}\\
 \nonumber
 \end{eqnarray}
